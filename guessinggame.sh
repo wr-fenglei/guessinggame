@@ -18,6 +18,6 @@ do
         echo "Your guess was too low, please try to guess again."
     else
         let ret=1
-        echo "Congratulation! Your guess was current."
+        echo "Congratulation! Your guess was correct."
     fi
 done
