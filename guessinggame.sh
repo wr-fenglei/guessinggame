@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+function count() {
+    count=$(ls -l | grep ^- | wc -l)
+    echo $count
+}
+
 function compare() {
     if [[ $1 -gt $2 ]]
     then
@@ -11,7 +16,7 @@ function compare() {
     fi
 }
 
-count=$(ls -l | grep ^- | wc -l)
+count=$(count)
 echo "Can you guess how many files are in the current directory?"
 while [[ $user_answer -ne $count ]]
 do
