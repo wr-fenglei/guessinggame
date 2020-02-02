@@ -6,4 +6,4 @@ readme.md: guessinggame.sh
 	@wc -l guessinggame.sh | egrep -o "[0-9]+" >> README.md
 	@echo "README.md is created."
 clean:
-	@[ -f ./README.md ] && rm README.md || true && echo "clean succeeded"
+	@[ -f ./README.md ] && rm README.md || true && echo "README.md is removed."

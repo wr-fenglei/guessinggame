@@ -1,9 +1,9 @@
 function count() {
-    echo $(ls -al | grep ^- | wc -l)
+    echo $(ls -A1 | wc -l)
 }
 
 function is_integer() {
-    [[ $1 =~ ^0$|^[+-]?[1-9][0-9]*$ ]] && true || false
+    [[ $1 =~ ^[+-]?[0-9]*$|^[+-]?0x[0-9A-Fa-f]*$ ]] && true || false
 }
 
 function compare() {
