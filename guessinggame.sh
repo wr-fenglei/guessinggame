@@ -3,7 +3,7 @@ function count() {
 }
 
 function is_integer() {
-    [[ $1 =~ ^[+-]?[0-9]*$|^[+-]?0x[0-9A-Fa-f]*$ ]] && true || false
+    [[ $1 =~ ^[+-]?[1-9][0-9]*$|^[+-]?0[0-7]*$|^[+-]?0x[0-9A-Fa-f]+$ ]] && true || false
 }
 
 function compare() {
