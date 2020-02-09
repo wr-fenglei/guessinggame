@@ -1,24 +1,16 @@
 #!/usr/bin/env bash
 
 function is_natural_number() {
-    [[ $1 =~ ^[1-9][0-9]*$|^0$ ]] && true || false
+    [[ $1 =~ ^[1-9][0-9]*$|^0$ ]]
 }
 
 function is_overflow() {
-    # 9223372036854775807
-    local digits=$(echo $1 | egrep -o "[1-9][0-9]*$")
-    # not more than 19 digits
-    if [[ ${#digits} -gt 19 ]]; then
-        return 0
-    fi
-    # require the same sign
-    local str_num=$1
-    typeset -i int_num=$1
-    if [[ ${str_num:0:1} = "-" ]]; then
-        [[ ${int_num:0:1} != "-" ]] && return 0 || return 1
-    else
-        [[ ${int_num:0:1} = "-" ]] && return 0 || return 1
-    fi
+    # the upper limit for Bash integer is 9223372036854775807 (19 digits)
+    # 0 ... 9223372036854775807 is valid,
+    # 9223372036854775808 ... 9999999999999999999 will became a signed negative number,
+    # 10000000000000000000 .... may be signed negative or positive, but must be more than 19 digits.
+    # Thanks Mateusz Kita
+    [[ ${#1} -gt 19 ]] || [[ $1 -lt 0 ]]
 }
 
 echo "Can you guess how many files are in the current directory?"
