@@ -18,7 +18,7 @@ count=$(ls -A1 | wc -l)
 correct=false
 while [[ "$correct" = false ]]; do
     read answer
-    if ! $(is_natural_number $answer); then
+    if ! $(is_natural_number "$answer"); then
         echo "Your guess was not natural number, please try to guess again."
     elif $(is_overflow $answer); then
         echo "Your guess was overflow, please try to guess again."
