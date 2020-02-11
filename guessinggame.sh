@@ -15,8 +15,7 @@ function is_overflow() {
 
 echo "Can you guess how many files are in the current directory?"
 count=$(ls -A1 | wc -l)
-correct=false
-while [[ "$correct" = false ]]; do
+while :; do
     read answer
     if ! $(is_natural_number "$answer"); then
         echo "Your guess was not natural number, please try to guess again."
@@ -28,6 +27,6 @@ while [[ "$correct" = false ]]; do
         echo "Your guess was too low, please try to guess again."
     else
         echo "Congratulation! Your guess was correct."
-        let correct=true
+        exit 0
     fi
 done
